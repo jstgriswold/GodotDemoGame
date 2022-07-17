@@ -1,0 +1,217 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://addons/dialogue_manager/dialogue_resource.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+syntax_version = 2
+raw_text = "~ main_dialog
+
+if has_met_NPC == false
+	VirtualGuy: Hello
+	set has_met_NPC = true
+else
+	VirtualGuy: Hello again!
+VirtualGuy: How's it going?
+- I'm good
+	VirtualGuy: Glad to hear it!
+- This game feels a little unfinished... => unfinished_node
+- End the conversation => END
+VirtualGuy: Take care and see you soon!
+set talk_active = false
+
+
+~ unfinished_node
+
+VirtualGuy: Doesn't look like anything to me, but...
+=> main_dialog"
+errors = [  ]
+titles = {
+"main_dialog": "2",
+"unfinished_node": "18"
+}
+lines = {
+"0": {
+"next_id": "2",
+"text": "main_dialog",
+"type": "title"
+},
+"10": {
+"next_id": "18",
+"next_id_after": "12",
+"replacements": [  ],
+"text": "This game feels a little unfinished...",
+"translation_key": "This game feels a little unfinished...",
+"type": "response"
+},
+"11": {
+"next_id": "12",
+"next_id_after": "12",
+"replacements": [  ],
+"text": "End the conversation",
+"translation_key": "End the conversation",
+"type": "response"
+},
+"12": {
+"character": "VirtualGuy",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "13",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Take care and see you soon!",
+"time": null,
+"translation_key": "Take care and see you soon!",
+"type": "dialogue"
+},
+"13": {
+"mutation": {
+"expression": [ {
+"type": "variable",
+"value": "talk_active"
+}, {
+"type": "assignment",
+"value": "="
+}, {
+"type": "bool",
+"value": false
+} ]
+},
+"next_id": "",
+"type": "mutation"
+},
+"16": {
+"next_id": "18",
+"text": "unfinished_node",
+"type": "title"
+},
+"18": {
+"character": "VirtualGuy",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "19",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Doesn't look like anything to me, but...",
+"time": null,
+"translation_key": "Doesn't look like anything to me, but...",
+"type": "dialogue"
+},
+"19": {
+"next_id": "2",
+"type": "goto"
+},
+"2": {
+"condition": {
+"expression": [ {
+"type": "variable",
+"value": "has_met_NPC"
+}, {
+"type": "comparison",
+"value": "=="
+}, {
+"type": "bool",
+"value": false
+} ]
+},
+"next_conditional_id": "5",
+"next_id": "3",
+"next_id_after": "7",
+"type": "condition"
+},
+"3": {
+"character": "VirtualGuy",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "4",
+"parent_id": "2",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Hello",
+"time": null,
+"translation_key": "Hello",
+"type": "dialogue"
+},
+"4": {
+"mutation": {
+"expression": [ {
+"type": "variable",
+"value": "has_met_NPC"
+}, {
+"type": "assignment",
+"value": "="
+}, {
+"type": "bool",
+"value": true
+} ]
+},
+"next_id": "7",
+"parent_id": "2",
+"type": "mutation"
+},
+"5": {
+"next_conditional_id": "7",
+"next_id": "6",
+"next_id_after": "7",
+"type": "condition"
+},
+"6": {
+"character": "VirtualGuy",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "7",
+"parent_id": "5",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Hello again!",
+"time": null,
+"translation_key": "Hello again!",
+"type": "dialogue"
+},
+"7": {
+"character": "VirtualGuy",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "8",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "How's it going?",
+"time": null,
+"translation_key": "How's it going?",
+"type": "dialogue"
+},
+"8": {
+"next_id": "9",
+"next_id_after": "12",
+"replacements": [  ],
+"responses": PoolStringArray( "8", "10", "11" ),
+"text": "I'm good",
+"translation_key": "I'm good",
+"type": "response"
+},
+"9": {
+"character": "VirtualGuy",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "12",
+"parent_id": "8",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Glad to hear it!",
+"time": null,
+"translation_key": "Glad to hear it!",
+"type": "dialogue"
+}
+}
