@@ -2,7 +2,7 @@
 
 ## Description
 
-This is a small demo game made by James Griswold to learn Godot.
+This is a small demo game I made to learn Godot.
 
 ## Features
 
